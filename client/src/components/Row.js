@@ -16,7 +16,7 @@ const Row = ({  id, fullname, email, age, country }) => {
       <Td>{country}</Td>
       <Td>
         <Box display="flex" gap="1">
-          <Button colorScheme={'bleu'}>
+          <Button colorScheme={'red'}>
             <AiFillEdit
               onClick={() => {
                 onOpen();
@@ -24,7 +24,7 @@ const Row = ({  id, fullname, email, age, country }) => {
               }}
             />
           </Button>
-          <Button colorScheme={'bleu'} onClick={() => Delete(id)}>
+          <Button colorScheme={'red'} onClick={() => Delete(id)}>
             <AiFillDelete />
           </Button>
         </Box>
@@ -32,5 +32,6 @@ const Row = ({  id, fullname, email, age, country }) => {
     </Tr>
   );
 };
+//le coleur est red red pour lmes deux 
 
 export default Row;
