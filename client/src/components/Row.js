@@ -16,7 +16,7 @@ const Row = ({  id, fullname, email, age, country }) => {
       <Td>{country}</Td>
       <Td>
         <Box display="flex" gap="1">
-          <Button colorScheme={'blue'}>
+          <Button colorScheme={'Rouge'}>
             <AiFillEdit
               onClick={() => {
                 onOpen();
