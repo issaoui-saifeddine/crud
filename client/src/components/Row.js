@@ -16,7 +16,7 @@ const Row = ({  id, fullname, email, age, country }) => {
       <Td>{country}</Td>
       <Td>
         <Box display="flex" gap="1">
-          <Button colorScheme={'Rouge'}>
+          <Button colorScheme={'bleu'}>
             <AiFillEdit
               onClick={() => {
                 onOpen();
@@ -24,7 +24,7 @@ const Row = ({  id, fullname, email, age, country }) => {
               }}
             />
           </Button>
-          <Button colorScheme={'red'} onClick={() => Delete(id)}>
+          <Button colorScheme={'bleu'} onClick={() => Delete(id)}>
             <AiFillDelete />
           </Button>
         </Box>
