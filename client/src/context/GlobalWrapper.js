@@ -13,7 +13,7 @@ export default function Wrapper({ children }) {
   const toast = useToast();
   const FetchUsers = () => {
     axios
-      .get('/api/users')
+      .get('https://5000-issaouisaifeddin-crud-utetbb6fh5o.ws-eu117.gitpod.io/api/users')
       .then((res) => {
         setUsers(res.data);
       })
@@ -24,7 +24,7 @@ export default function Wrapper({ children }) {
 
   const Search = (query) => {
     axios
-      .post(`/api/users/search?key=${query}`)
+      .post(`https://5000-issaouisaifeddin-crud-utetbb6fh5o.ws-eu117.gitpod.io/api/users/search?key=${query}`)
       .then((res) => {
         setUsers(res.data);
       })
@@ -35,7 +35,7 @@ export default function Wrapper({ children }) {
 
   const Delete = (id) => {
     axios
-      .delete(`/api/users/${id}`)
+      .delete(`https://5000-issaouisaifeddin-crud-utetbb6fh5o.ws-eu117.gitpod.io/api/users/${id}`)
       .then((res) => {
         setUsers(users.filter((u) => u._id != id));
         toast({
@@ -52,7 +52,7 @@ export default function Wrapper({ children }) {
 
   const Add = (form, setForm) => {
     axios
-      .post('/api/users', form)
+      .post('https://5000-issaouisaifeddin-crud-utetbb6fh5o.ws-eu117.gitpod.io/api/users', form)
       .then((res) => {
         setUsers([...users, res.data]);
         toast({
@@ -72,7 +72,7 @@ export default function Wrapper({ children }) {
 
   const FindOne = async (id) => {
     await axios
-      .get(`/api/users/${id}`)
+      .get(`https://5000-issaouisaifeddin-crud-utetbb6fh5o.ws-eu117.gitpod.io/api/users/${id}`)
       .then((res) => {
         setUser(res.data);
         
@@ -93,7 +93,7 @@ export default function Wrapper({ children }) {
     console.log("Data being sent:", cleanForm); // Vérifier les données nettoyées
   
     axios
-      .put(`/api/users/${id}`, cleanForm)
+      .put(`https://5000-issaouisaifeddin-crud-utetbb6fh5o.ws-eu117.gitpod.io/api/users/${id}`, cleanForm)
       .then((res) => {
         toast({
           title: 'User Updated',

@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    build:
+      context: ./  # Assure-toi que ton projet React est dans ./frontend
+      dockerfile: Dockerfile
+    container_name: react_app
+    restart: always
+    ports:
+      - "3005:3000"  # Port React
+    volumes:
+      - ./:/app  # Monte le code source local pour hot-reloading
+      - /app/node_modules  # Ignore node_modules pour éviter les conflits
+
+
+

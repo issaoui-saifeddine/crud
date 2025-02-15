@@ -1,15 +1,19 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { ValidationError } from 'class-validator';
 import { AppModule } from './app.module';
-import {
-  ValidationException,
-  ValidationFilter,
-} from './util/filter.validation';
+import { ValidationException } from './util/filter.validation';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
- 
+  
+  // 📌 Activer CORS pour autoriser le frontend React
+  app.enableCors({
+    origin: ['https://3005-issaouisaifeddin-crud-utetbb6fh5o.ws-eu117.gitpod.io'], // Remplace par ton domaine en prod
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Permet les cookies et l'authentification
+  });
+
   app.setGlobalPrefix('/api');
 
   app.useGlobalPipes(
@@ -26,10 +30,9 @@ async function bootstrap() {
       },
     }),
   );
-  
-  
 
-  const port = process.env.PORT;
-  await app.listen(5000);
+  const port = process.env.PORT || 5000;
+  await app.listen(port);
+  console.log(`🚀 Server running on http://localhost:${port}/api`);
 }
 bootstrap();
