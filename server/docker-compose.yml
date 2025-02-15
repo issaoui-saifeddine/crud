@@ -29,29 +29,32 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: password
       ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+      ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+      
     networks:
       - my_network
     depends_on:
       - mongodb
 
+
   dev-client:
     build:
-      context: .  # Assure-toi que le code NestJS est dans ./backend
-      dockerfile: Dockerfile  # Ton Dockerfile pour NestJSd
+      context: ./  # Ensure the NestJS code is in ./backend
+      dockerfile: Dockerfile  # Your NestJS Dockerfile
 
     container_name: nestjs_dev_server
     restart: always
     ports:
-      - "5000:5000"  # Port par défaut pour NestJS
+      - "5000:5000"  # Default port for NestJS
     volumes:
-      - ./:/app  # Monte le code source local pour hot-reloading
-      - /app/node_modules  # Ignore node_modules pour éviter les conflits
+      - ./:/app  # Mount the backend code for hot-reloading
+      - /app/node_modules  # Prevent node_modules conflicts
     networks:
       - my_network
     depends_on:
-      - mongodb  # S'assure que MongoDB est prêt avant de lancer NestJS
-
-
+      - mongodb  # Ensure MongoDB is ready before launching NestJS
 
 volumes:
   mongodb_data:
